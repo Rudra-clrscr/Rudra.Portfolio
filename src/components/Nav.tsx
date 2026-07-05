@@ -17,12 +17,34 @@ const links = [
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [active, setActive] = useState<string>("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    const ids = links.map((l) => l.href.slice(1));
+    const sections = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+    if (sections.length === 0) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        if (visible[0]) setActive(`#${visible[0].target.id}`);
+      },
+      { rootMargin: "-40% 0px -55% 0px", threshold: [0, 0.25, 0.5, 1] }
+    );
+
+    sections.forEach((s) => observer.observe(s));
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -43,9 +65,16 @@ export default function Nav() {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-muted transition-colors hover:text-foreground"
+              className={`relative text-sm transition-colors hover:text-foreground ${
+                active === link.href ? "text-foreground" : "text-muted"
+              }`}
             >
               {link.label}
+              <span
+                className={`absolute -bottom-1.5 left-0 h-0.5 rounded-full bg-gradient-to-r from-accent to-accent-2 transition-all duration-300 ${
+                  active === link.href ? "w-full" : "w-0"
+                }`}
+              />
             </a>
           ))}
           <a

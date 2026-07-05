@@ -25,7 +25,7 @@ export default function Projects() {
             <Tilt className="h-full">
             <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-background-elevated/60 transition-colors duration-300 hover:border-accent/50">
               <div
-                className={`relative flex h-28 items-center justify-center overflow-hidden bg-gradient-to-br ${
+                className={`card-shine relative flex h-28 items-center justify-center overflow-hidden bg-gradient-to-br ${
                   banners[i % banners.length]
                 }`}
               >

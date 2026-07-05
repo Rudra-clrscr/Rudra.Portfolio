@@ -13,8 +13,10 @@ type CountUpProps = {
 };
 
 /**
- * Counts from 0 up to `value` once it scrolls into view. Handles decimals
- * (e.g. a 7.8 CGPA) and jumps straight to the value for reduced-motion users.
+ * Counts up to `value` once it scrolls into view. Renders the final value on
+ * the server / first paint (so crawlers and no-JS users never see "0"), then
+ * resets to 0 and animates when the element enters the viewport. Handles
+ * decimals (e.g. a 7.8 CGPA) and skips the animation for reduced-motion users.
  */
 export default function CountUp({
   value,
@@ -24,7 +26,7 @@ export default function CountUp({
 }: CountUpProps) {
   const ref = useRef<HTMLSpanElement | null>(null);
   const reduced = usePrefersReducedMotion();
-  const [display, setDisplay] = useState(0);
+  const [display, setDisplay] = useState(value);
   const decimals = value % 1 !== 0 ? 1 : 0;
 
   useEffect(() => {
@@ -38,6 +40,7 @@ export default function CountUp({
       ([entry]) => {
         if (!entry.isIntersecting) return;
         observer.disconnect();
+        setDisplay(0);
 
         const step = (t: number) => {
           if (!start) start = t;

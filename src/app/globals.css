@@ -162,9 +162,77 @@ body::before {
   transition: opacity 0.4s ease;
 }
 
+/* Animated gradient underline under section headings (reveals with the block) */
+.section-underline {
+  display: block;
+  height: 3px;
+  width: 0;
+  margin-top: 0.75rem;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: width 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.15s;
+}
+.reveal.is-visible .section-underline {
+  width: 3.5rem;
+}
+
+/* Magnetic button spring-back */
+.magnetic {
+  display: inline-block;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.2s, background-color 0.2s;
+  will-change: transform;
+}
+
+/* Light sweep across project card banners on hover */
+.card-shine::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    115deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.14) 50%,
+    transparent 70%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+.group:hover .card-shine::after {
+  transform: translateX(120%);
+}
+
+/* Timeline: gradient rail + glowing dots */
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    180deg,
+    var(--accent),
+    var(--accent-2),
+    transparent
+  );
+}
+.timeline-dot {
+  box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.12);
+  animation: dot-pulse 2.4s ease-in-out infinite;
+}
+@keyframes dot-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.12); }
+  50% { box-shadow: 0 0 0 7px rgba(124, 92, 255, 0.04); }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .typewriter-caret { animation: none; }
   .tilt { transition: none; }
   .hero-portrait-ring,
   .hero-portrait-ring > * { animation: none; }
+  .magnetic { transition: none; }
+  .card-shine::after { display: none; }
+  .timeline-dot { animation: none; }
+  .section-underline { transition: none; }
 }

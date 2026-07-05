@@ -31,6 +31,7 @@ export default function Section({
           {title && (
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
               {title}
+              <span className="section-underline" aria-hidden="true" />
             </h2>
           )}
         </Reveal>

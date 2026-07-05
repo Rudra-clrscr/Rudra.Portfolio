@@ -2,6 +2,7 @@ import Image from "next/image";
 import Reveal from "./Reveal";
 import Typewriter from "./Typewriter";
 import ParticleField from "./ParticleField";
+import MagneticButton from "./MagneticButton";
 import { siteContent } from "@/content";
 
 export default function Hero() {
@@ -45,26 +46,25 @@ export default function Hero() {
 
           <Reveal delay={240}>
             <div className="mt-10 flex flex-wrap gap-4">
-              <a
+              <MagneticButton
                 href="#projects"
-                className="rounded-full bg-gradient-to-r from-accent to-accent-2 px-6 py-3 font-medium text-white transition hover:opacity-90"
+                className="rounded-full bg-gradient-to-r from-accent to-accent-2 px-6 py-3 font-medium text-white transition-[opacity,transform] hover:opacity-90"
               >
                 View my work
-              </a>
-              <a
+              </MagneticButton>
+              <MagneticButton
                 href="#contact"
-                className="rounded-full border border-border px-6 py-3 font-medium transition hover:bg-background-elevated"
+                className="rounded-full border border-border px-6 py-3 font-medium transition-[background-color,transform] hover:bg-background-elevated"
               >
                 Get in touch
-              </a>
-              <a
+              </MagneticButton>
+              <MagneticButton
                 href={profile.resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="rounded-full border border-border px-6 py-3 font-medium transition hover:bg-background-elevated"
+                external
+                className="rounded-full border border-border px-6 py-3 font-medium transition-[background-color,transform] hover:bg-background-elevated"
               >
                 Download résumé
-              </a>
+              </MagneticButton>
             </div>
           </Reveal>
 
