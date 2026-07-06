@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Section from "./Section";
 import Reveal from "./Reveal";
+import TechIcon from "./TechIcon";
 import { siteContent } from "@/content";
 
 export default function Skills() {
@@ -44,8 +45,12 @@ export default function Skills() {
                 {group.items.map((item) => (
                   <li
                     key={item}
-                    className="rounded-lg border border-border px-3 py-1.5 text-sm"
+                    className="group/chip flex items-center gap-2 rounded-lg border border-border px-3 py-1.5 text-sm transition-colors hover:border-accent/50 hover:bg-accent/5"
                   >
+                    <TechIcon
+                      name={item}
+                      className="h-4 w-4 text-muted transition-colors group-hover/chip:text-accent-2"
+                    />
                     {item}
                   </li>
                 ))}

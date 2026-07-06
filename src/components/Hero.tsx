@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Reveal from "./Reveal";
 import Typewriter from "./Typewriter";
 import ParticleField from "./ParticleField";
 import MagneticButton from "./MagneticButton";
+import HeroPortrait from "./HeroPortrait";
 import { siteContent } from "@/content";
 
 export default function Hero() {
@@ -86,18 +86,7 @@ export default function Hero() {
         </div>
 
         <Reveal delay={200} className="shrink-0 self-center md:self-auto">
-          <div className="hero-portrait">
-            <div className="hero-portrait-ring">
-              <Image
-                src={profile.photo}
-                alt={profile.name}
-                width={320}
-                height={320}
-                priority
-                className="h-40 w-40 rounded-full object-cover sm:h-52 sm:w-52 md:h-64 md:w-64"
-              />
-            </div>
-          </div>
+          <HeroPortrait src={profile.photo} alt={profile.name} />
         </Reveal>
       </div>
     </section>
