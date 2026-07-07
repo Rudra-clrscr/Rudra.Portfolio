@@ -15,7 +15,7 @@ export default function Skills() {
     filter === "All" ? skills : skills.filter((g) => g.category === filter);
 
   return (
-    <Section id="skills" eyebrow="Toolbox" jp="技術" title="Skills & technologies">
+    <Section id="skills" eyebrow="Toolbox" watermark="04" title="Skills & technologies">
       <Reveal className="mb-8">
         <div className="flex flex-wrap gap-2">
           {categories.map((cat) => (

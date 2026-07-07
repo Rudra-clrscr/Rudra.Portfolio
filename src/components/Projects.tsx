@@ -19,7 +19,7 @@ export default function Projects() {
   const { projects } = siteContent;
 
   return (
-    <Section id="projects" eyebrow="Work" jp="実績" title="Featured projects">
+    <Section id="projects" eyebrow="Work" watermark="02" title="Featured projects">
       <div className="grid gap-6 sm:grid-cols-2">
         {projects.map((project, i) => (
           <Reveal key={project.title} delay={i * 80} className="h-full">

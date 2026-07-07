@@ -7,7 +7,7 @@ export default function About() {
   const { profile, quickFacts, metrics } = siteContent;
 
   return (
-    <Section id="about" eyebrow="About" jp="概要" title="A bit about me">
+    <Section id="about" eyebrow="About" watermark="01" title="A bit about me">
       <div className="grid gap-12 md:grid-cols-[1.6fr_1fr]">
         <Reveal>
           <p className="text-lg leading-relaxed text-muted">{profile.about}</p>

@@ -5,8 +5,8 @@ type SectionProps = {
   id: string;
   eyebrow?: string;
   title?: string;
-  /** Decorative Japanese kanji label (Neo-Tokyo accent). */
-  jp?: string;
+  /** Big faint index/word rendered as a parallax watermark behind the heading. */
+  watermark?: string;
   children: React.ReactNode;
   className?: string;
 };
@@ -16,7 +16,7 @@ export default function Section({
   id,
   eyebrow,
   title,
-  jp,
+  watermark,
   children,
   className = "",
 }: SectionProps) {
@@ -25,13 +25,13 @@ export default function Section({
       id={id}
       className={`relative overflow-hidden mx-auto w-full max-w-5xl px-6 py-20 sm:py-28 ${className}`}
     >
-      {jp && (
+      {watermark && (
         <Parallax
           aria-hidden="true"
-          className="jp-watermark pointer-events-none absolute -top-2 right-2 select-none font-bold sm:right-4"
+          className="jp-watermark pointer-events-none absolute -top-2 right-2 select-none font-mono font-bold sm:right-4"
           speed={46}
         >
-          {jp}
+          {watermark}
         </Parallax>
       )}
 
@@ -39,11 +39,9 @@ export default function Section({
         <Reveal className="relative z-[1] mb-12">
           {eyebrow && (
             <p className="mb-2 flex items-center gap-2 font-mono text-sm uppercase tracking-widest text-accent-2">
-              {jp && (
-                <span className="jp-eyebrow text-base" aria-hidden="true">
-                  {jp}
-                </span>
-              )}
+              <span className="jp-eyebrow" aria-hidden="true">
+                {"//"}
+              </span>
               {eyebrow}
             </p>
           )}

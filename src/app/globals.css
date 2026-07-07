@@ -13,7 +13,7 @@
   --accent-2: #22d3ee;
   --accent-3: #f471b5;
 
-  /* Neo-Tokyo vermilion (朱) — seal / kanji accent */
+  /* Neo-Tokyo vermilion — seal / accent */
   --accent-vermilion: #ff2d4f;
 }
 
@@ -305,18 +305,18 @@ body::before {
   font-size: clamp(5rem, 17vw, 12rem);
   line-height: 0.8;
   color: var(--foreground);
-  opacity: 0.04;
+  opacity: 0.065;
   letter-spacing: -0.04em;
 }
 
-/* Vertical (tategaki) text label — runs top-to-bottom down a margin */
+/* Vertical text label — runs top-to-bottom down a margin */
 .jp-vertical {
   writing-mode: vertical-rl;
-  text-orientation: upright;
-  letter-spacing: 0.35em;
-  font-feature-settings: "palt";
+  text-orientation: mixed;
+  text-transform: uppercase;
+  letter-spacing: 0.5em;
   color: var(--muted);
-  opacity: 0.75;
+  opacity: 0.7;
 }
 .jp-vertical .jp-vertical-accent {
   color: var(--accent-vermilion);

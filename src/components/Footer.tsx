@@ -9,7 +9,7 @@ export default function Footer() {
     <footer className="border-t border-border">
       <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-6 py-8 sm:flex-row">
         <div className="flex items-center gap-4">
-          <Hanko glyph="ル" />
+          <Hanko glyph="R" />
           <p className="text-sm text-muted">
             © {year} {profile.name}. Built with Next.js & Tailwind.
           </p>

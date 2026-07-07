@@ -4,6 +4,7 @@ import ParticleField from "./ParticleField";
 import MagneticButton from "./MagneticButton";
 import HeroPortrait from "./HeroPortrait";
 import Parallax from "./Parallax";
+import Hanko from "./Hanko";
 import { siteContent } from "@/content";
 
 export default function Hero() {
@@ -16,27 +17,33 @@ export default function Hero() {
     >
       <ParticleField />
 
-      {/* Neo-Tokyo vertical (tategaki) accent down the left margin */}
+      {/* Vertical side label — sits in the left gutter on wide screens,
+          translated fully outside the content column so it never collides
+          with the headline. */}
       <span
         aria-hidden="true"
-        className="jp-vertical absolute left-4 top-1/2 hidden -translate-y-1/2 font-mono text-sm lg:block"
+        className="jp-vertical absolute left-0 top-1/2 hidden font-mono text-xs xl:block"
+        style={{ transform: "translate(-200%, -50%)" }}
       >
-        ポートフォリオ<span className="jp-vertical-accent"> 二〇二六</span>
+        Portfolio<span className="jp-vertical-accent"> / 2026</span>
       </span>
 
-      {/* Huge faint kanji — "create/build" — drifts on scroll for depth */}
+      {/* Huge faint monogram — drifts on scroll for depth */}
       <Parallax
         aria-hidden="true"
         speed={60}
-        className="jp-watermark pointer-events-none absolute -right-2 top-16 select-none font-bold"
+        className="jp-watermark pointer-events-none absolute -right-2 top-16 select-none font-mono font-bold"
       >
-        創
+        RPS
       </Parallax>
 
       <div className="relative z-[1] flex flex-col-reverse items-start gap-12 md:flex-row md:items-center md:justify-between">
         <div className="min-w-0 flex-1">
           <Reveal>
-            <p className="mb-4 font-mono text-sm uppercase tracking-widest text-accent-2">
+            <p className="mb-4 flex items-center gap-2 font-mono text-sm uppercase tracking-widest text-accent-2">
+              <span className="jp-eyebrow" aria-hidden="true">
+                {"//"}
+              </span>
               {profile.location}
             </p>
           </Reveal>
@@ -107,6 +114,12 @@ export default function Hero() {
           <Parallax speed={26} tilt={6} zoom={0.05}>
             <HeroPortrait src={profile.photo} alt={profile.name} />
           </Parallax>
+          {/* Vermilion seal stamped on the portrait */}
+          <Hanko
+            glyph="R"
+            size={54}
+            className="absolute bottom-1 left-1 z-[2] sm:bottom-2 sm:left-2"
+          />
         </Reveal>
       </div>
     </section>

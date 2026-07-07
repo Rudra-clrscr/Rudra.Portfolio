@@ -1,9 +1,9 @@
 /**
- * Hanko (判子) — a Japanese vermilion seal. Used as a signature mark.
- * Pure SVG, no dependencies. The glyph defaults to ル ("Ru", for Rudra).
+ * A vermilion seal used as a signature mark. Pure SVG, no dependencies.
+ * The glyph defaults to "R" (for Rudra).
  */
 export default function Hanko({
-  glyph = "ル",
+  glyph = "R",
   size = 44,
   className = "",
 }: {
