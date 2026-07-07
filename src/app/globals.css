@@ -12,6 +12,9 @@
   --accent: #7c5cff;
   --accent-2: #22d3ee;
   --accent-3: #f471b5;
+
+  /* Neo-Tokyo vermilion (朱) — seal / kanji accent */
+  --accent-vermilion: #ff2d4f;
 }
 
 @theme inline {
@@ -23,6 +26,7 @@
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
   --color-accent-3: var(--accent-3);
+  --color-accent-vermilion: var(--accent-vermilion);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -281,4 +285,93 @@ body::before {
   .card-shine::after { display: none; }
   .timeline-dot { animation: none; }
   .section-underline { transition: none; }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   NEO-TOKYO / CYBERPUNK-JAPANESE LAYER
+   ───────────────────────────────────────────────────────────────────────── */
+
+/* Small vermilion kanji tag that sits before a section eyebrow */
+.jp-eyebrow {
+  color: var(--accent-vermilion);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-shadow: 0 0 12px rgba(255, 45, 79, 0.5);
+}
+
+/* Huge, faint kanji watermark behind a section heading (parallax-driven) */
+.jp-watermark {
+  z-index: 0;
+  font-size: clamp(5rem, 17vw, 12rem);
+  line-height: 0.8;
+  color: var(--foreground);
+  opacity: 0.04;
+  letter-spacing: -0.04em;
+}
+
+/* Vertical (tategaki) text label — runs top-to-bottom down a margin */
+.jp-vertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  letter-spacing: 0.35em;
+  font-feature-settings: "palt";
+  color: var(--muted);
+  opacity: 0.75;
+}
+.jp-vertical .jp-vertical-accent {
+  color: var(--accent-vermilion);
+}
+
+/* Hanko seal */
+.hanko {
+  display: inline-block;
+  line-height: 0;
+  border-radius: 12px;
+  box-shadow: 0 0 18px rgba(255, 45, 79, 0.35);
+  transform: rotate(-6deg);
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.3s ease;
+}
+.hanko:hover {
+  transform: rotate(0deg) scale(1.05);
+  box-shadow: 0 0 26px rgba(255, 45, 79, 0.55);
+}
+
+/* Neon vermilion glitch on hover (headings / interactive labels) */
+.jp-glitch {
+  position: relative;
+}
+.jp-glitch:hover {
+  animation: jp-glitch-shift 0.28s steps(2, end) 2;
+  text-shadow:
+    1.5px 0 0 var(--accent-vermilion),
+    -1.5px 0 0 var(--accent-2);
+}
+@keyframes jp-glitch-shift {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-1px, 1px); }
+  50% { transform: translate(1px, -1px); }
+  75% { transform: translate(-1px, 0); }
+  100% { transform: translate(0, 0); }
+}
+
+/* Faint CRT scanlines — layered over the hero for the neon-city feel */
+.scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.025) 0px,
+    rgba(255, 255, 255, 0.025) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  mix-blend-mode: overlay;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jp-glitch:hover { animation: none; }
 }

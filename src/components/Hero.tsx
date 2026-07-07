@@ -3,6 +3,7 @@ import Typewriter from "./Typewriter";
 import ParticleField from "./ParticleField";
 import MagneticButton from "./MagneticButton";
 import HeroPortrait from "./HeroPortrait";
+import Parallax from "./Parallax";
 import { siteContent } from "@/content";
 
 export default function Hero() {
@@ -11,11 +12,28 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center overflow-hidden px-6 pt-24"
+      className="scanlines relative mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center overflow-hidden px-6 pt-24"
     >
       <ParticleField />
 
-      <div className="flex flex-col-reverse items-start gap-12 md:flex-row md:items-center md:justify-between">
+      {/* Neo-Tokyo vertical (tategaki) accent down the left margin */}
+      <span
+        aria-hidden="true"
+        className="jp-vertical absolute left-4 top-1/2 hidden -translate-y-1/2 font-mono text-sm lg:block"
+      >
+        ポートフォリオ<span className="jp-vertical-accent"> 二〇二六</span>
+      </span>
+
+      {/* Huge faint kanji — "create/build" — drifts on scroll for depth */}
+      <Parallax
+        aria-hidden="true"
+        speed={60}
+        className="jp-watermark pointer-events-none absolute -right-2 top-16 select-none font-bold"
+      >
+        創
+      </Parallax>
+
+      <div className="relative z-[1] flex flex-col-reverse items-start gap-12 md:flex-row md:items-center md:justify-between">
         <div className="min-w-0 flex-1">
           <Reveal>
             <p className="mb-4 font-mono text-sm uppercase tracking-widest text-accent-2">
@@ -85,8 +103,10 @@ export default function Hero() {
           </Reveal>
         </div>
 
-        <Reveal delay={200} className="shrink-0 self-center md:self-auto">
-          <HeroPortrait src={profile.photo} alt={profile.name} />
+        <Reveal delay={200} className="relative z-[1] shrink-0 self-center md:self-auto">
+          <Parallax speed={26} tilt={6} zoom={0.05}>
+            <HeroPortrait src={profile.photo} alt={profile.name} />
+          </Parallax>
         </Reveal>
       </div>
     </section>

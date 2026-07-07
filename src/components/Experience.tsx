@@ -6,7 +6,7 @@ export default function Experience() {
   const { experience } = siteContent;
 
   return (
-    <Section id="experience" eyebrow="Journey" title="Education">
+    <Section id="experience" eyebrow="Journey" jp="学歴" title="Education">
       <div className="timeline relative pl-8">
         {experience.map((item, i) => (
           <Reveal key={`${item.title}-${item.org}`} delay={i * 70}>

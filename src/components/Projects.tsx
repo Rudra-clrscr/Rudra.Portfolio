@@ -1,6 +1,7 @@
 import Section from "./Section";
 import Reveal from "./Reveal";
 import Tilt from "./Tilt";
+import Parallax from "./Parallax";
 import { siteContent } from "@/content";
 
 // Distinct gradient per card, cycled by index.
@@ -18,10 +19,11 @@ export default function Projects() {
   const { projects } = siteContent;
 
   return (
-    <Section id="projects" eyebrow="Work" title="Featured projects">
+    <Section id="projects" eyebrow="Work" jp="実績" title="Featured projects">
       <div className="grid gap-6 sm:grid-cols-2">
         {projects.map((project, i) => (
-          <Reveal key={project.title} delay={i * 80}>
+          <Reveal key={project.title} delay={i * 80} className="h-full">
+            <Parallax speed={i % 2 === 0 ? 14 : 34} className="h-full">
             <Tilt className="h-full">
             <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-background-elevated/60 transition-colors duration-300 hover:border-accent/50">
               <div
@@ -73,6 +75,7 @@ export default function Projects() {
             </div>
             </article>
             </Tilt>
+            </Parallax>
           </Reveal>
         ))}
       </div>

@@ -53,7 +53,7 @@ export default function Contact() {
   }
 
   return (
-    <Section id="contact" eyebrow="Contact" title={contact.heading}>
+    <Section id="contact" eyebrow="Contact" jp="連絡" title={contact.heading}>
       <div className="grid gap-12 md:grid-cols-[1fr_1.2fr]">
         <Reveal>
           <div>

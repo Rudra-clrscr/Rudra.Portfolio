@@ -9,6 +9,7 @@ export default function ProjectExperience() {
     <Section
       id="experience-projects"
       eyebrow="Case Studies"
+      jp="事例"
       title="Project deep dives"
     >
       <div className="space-y-6">

@@ -6,7 +6,7 @@ export default function Certifications() {
   const { certifications } = siteContent;
 
   return (
-    <Section id="certifications" eyebrow="Credentials" title="Certifications">
+    <Section id="certifications" eyebrow="Credentials" jp="資格" title="Certifications">
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {certifications.map((cert, i) => (
           <Reveal key={cert.title} delay={i * 70}>

@@ -14,7 +14,7 @@ export default function Github() {
   const profileUrl = `https://github.com/${user}`;
 
   return (
-    <Section id="github" eyebrow="Activity" title="On GitHub">
+    <Section id="github" eyebrow="Activity" jp="貢献" title="On GitHub">
       <Reveal>
         <div className="rounded-2xl border border-border bg-background-elevated/60 p-6 sm:p-8">
           <div className="flex flex-wrap items-center justify-between gap-4">
